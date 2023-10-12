@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>掷骰子游戏</title>
+    <!-- 引入css文件 -->
+    <link rel="stylesheet" href="dice-game.css">
+    <link rel="stylesheet" href="button.css">
+    <link rel="stylesheet" href="button2.css">
+    <link rel="stylesheet" href="input.css">
+    <link rel="stylesheet" href="button1.css">
+</head>
+<body>
+    <!-- 游戏开始界面 -->
+    <div id="scene-startgame">
+        <audio id="bgm" loop="true" src="bgm/bgm.mp3" autoplay="autoplay"></audio>
+        <button id="rule" class="btn" type="button">
+            <strong>游戏规则</strong>
+            <div id="container-stars">
+              <div id="stars"></div>
+            </div>
+            <div id="glow">
+              <div class="circle"></div>
+              <div class="circle"></div>
+            </div>
+        </button>
+        <button id="singlePlayers" class="btn" type="button">
+            <strong>单人玩家（电脑作战）</strong>
+            <div id="container-stars">
+              <div id="stars"></div>
+            </div>
+            <div id="glow">
+              <div class="circle"></div>
+              <div class="circle"></div>
+            </div>
+        </button>
+        <button id="twoPlayers" class="btn" type="button">
+            <strong>双人对战</strong>
+            <div id="container-stars">
+              <div id="stars"></div>
+            </div>
+            <div id="glow">
+              <div class="circle"></div>
+              <div class="circle"></div>
+            </div>
+        </button>
+        <button id="threePlayers" class="btn" type="button">
+            <strong>三人对战</strong>
+            <div id="container-stars">
+              <div id="stars"></div>
+            </div>
+            <div id="glow">
+              <div class="circle"></div>
+              <div class="circle"></div>
+            </div>
+        </button>
+        <button id="fourPlayers" class="btn" type="button">
+            <strong>四人对战</strong>
+            <div id="container-stars">
+              <div id="stars"></div>
+            </div>
+            <div id="glow">
+              <div class="circle"></div>
+              <div class="circle"></div>
+            </div>
+        </button>
+    </div>
+    <!-- 规则介绍界面 -->
+    <div id="scene-gamerule">
+        <div class="container">
+            <h1>游戏简介</h1>
+            <div class="section main" style="align-items: center;">
+                <h2>游戏背景介绍</h2>
+                <p style="text-indent:2em;">《孤注一掷》是由GDE德国队自主研发的一款全新开放世界运气游戏。游戏发生在一个被称作「web端」的幻想世界，在这里，
+                    被神选中的人将被授予「筹码」，导引运气之力‌​​​‌‌‌‌‌‌‌‌​​‌‌​‌‌‌​‌​。你将扮演一位名为「赌徒」的神秘角色，在自由的旅行中邂逅性格各异、能力独特的同伴们，
+                    和他们一起击败强敌，找回失散的筹码——同时，逐步发掘「赌神」的真相。</p >
+            </div>
+            <div class="section main" style="align-items: center;" >
+                <h2>游戏规则介绍</h2>
+                <p style="text-indent:2em;">进入游戏，选择游戏模式后，设置游戏局数和玩家个人筹码数
+
+                    每一局游戏内有三轮投掷机会，玩家一人一次轮流投掷骰子，每个玩家有5个骰子
+                    
+                    前两次投掷骰子之后可以选择锁定0~5个骰子，锁定的骰子位于选定区域不再改变
+                    
+                    前两轮每轮投掷结束并在所有玩家锁定骰子后，每位玩家可以选择增加倍率：0，1，2，3。选择完成后进入下一轮。
+                    
+                    第三轮投掷结束后，所有玩家的全部骰子自动锁定并进行计分（得分为五个骰子的点数总和+奖励分），得出最终结果，筹码划分。
+
+                    分数最高的玩家从所有其它玩家手里赢得（二人分差的绝对值）*（总倍率）的筹码。
+
+                    N局游戏后，筹码最多的玩家获胜。
+                    
+                    如若中途有玩家筹码小于等于0，则该玩家被淘汰，游戏直接结束。
+                </p >
+            </div>
+            <div class="main section" >
+                <h2>游戏奖励分设置</h2>
+                    <div class="left">
+                        <p>双对 （包括两对一样的骰子）：10分 </p>
+                        <img src="photo/shuangdui.jpg" width="326" height="70">
+                        <p>三连（包括三个一样的骰子） ：10分</p>
+                        <img src="photo/sandui.jpg" width="326" height="70">
+                        <p>葫芦（三个一样的骰子加一个对子）：20分</p>
+                        <img src="photo/hulu.jpg" width="326" height="70">
+                        <p>四连（四个一样的骰子）： 40分 </p>
+                        <img src="photo/silian.jpg" width="326" height="70">
+                    </div>
+                    <div class="right">
+                        <p>五连（五个一样的骰子） ：100分</p>
+                        <img src="photo/wulian.jpg" width="326" height="70">
+                        <p>小顺子（四个数字连续的骰子）：30分</p>
+                        <img src="photo/xiaoshunzi.jpg" width="326" height="70">
+                        <p>大顺子（五个数字连续的骰子）：60分</p>
+                        <img src="photo/dashunzi.jpg" width="326" height="70">
+                    </div>
+            </div>
+        </div>
+        <button id="understand" class="btn" type="button">
+            <strong>返回开始界面</strong>
+            <div id="container-stars">
+              <div id="stars"></div>
+            </div>
+            <div id="glow">
+              <div class="circle"></div>
+              <div class="circle"></div>
+            </div>
+        </button>
+    </div>
+    <!-- 游戏设置区域 -->
+    <div id="setting-div" class="main">
+        <div class="form-control">
+            <input id ="count-input" type="value" required="" min="1" >
+            <label for="count-input">
+                <span style="transition-delay:0ms">请</span><span style="transition-delay:50ms">输</span><span style="transition-delay:100ms">入</span><span style="transition-delay:150ms">游</span><span style="transition-delay:200ms">戏</span><span style="transition-delay:250ms">局</span><span style="transition-delay:300ms">数</span>
+            </label>
+        </div>
+        <div class="form-control">
+            <input id="chips-input" type="value" required="" min="1" >
+            <label for="chips-input">
+                <span style="transition-delay:0ms">请</span><span style="transition-delay:50ms">输</span><span style="transition-delay:100ms">入</span><span style="transition-delay:150ms">玩</span><span style="transition-delay:200ms">家</span><span style="transition-delay:250ms">筹</span><span style="transition-delay:300ms">码</span><span style="transition-delay:350ms">数</span>
+            </label>
+        </div>
+        <div class="form-control">
+            <input id ="play1-input" type="text" required="" >
+            <label for="play1-input">
+                <span style="transition-delay:0ms">请</span><span style="transition-delay:50ms">输</span><span style="transition-delay:100ms">入</span><span style="transition-delay:150ms">玩</span><span style="transition-delay:200ms">家</span><span style="transition-delay:250ms">1</span><span style="transition-delay:300ms">姓</span><span style="transition-delay:350ms">名</span>
+            </label>
+        </div>
+        <div class="form-control" id = "play2-style" style="display: none;">
+            <input id ="play2-input" type="text" required="" >
+            <label for="play2-input">
+                <span style="transition-delay:0ms">请</span><span style="transition-delay:50ms">输</span><span style="transition-delay:100ms">入</span><span style="transition-delay:150ms">玩</span><span style="transition-delay:200ms">家</span><span style="transition-delay:250ms">2</span><span style="transition-delay:300ms">姓</span><span style="transition-delay:350ms">名</span>
+            </label>
+        </div>
+        <div class="form-control" id = "play3-style" style="display: none;" >
+            <input id ="play3-input" type="text" required=""  >
+            <label for="play3-input">
+                <span style="transition-delay:0ms">请</span><span style="transition-delay:50ms">输</span><span style="transition-delay:100ms">入</span><span style="transition-delay:150ms">玩</span><span style="transition-delay:200ms">家</span><span style="transition-delay:250ms">3</span><span style="transition-delay:300ms">姓</span><span style="transition-delay:350ms">名</span>
+            </label>
+        </div>
+        <div class="form-control" id = "play4-style" style="display: none;" >
+            <input id ="play4-input" type="text" required="" >
+            <label for="play4-input">
+                <span style="transition-delay:0ms">请</span><span style="transition-delay:50ms">输</span><span style="transition-delay:100ms">入</span><span style="transition-delay:150ms">玩</span><span style="transition-delay:200ms">家</span><span style="transition-delay:250ms">4</span><span style="transition-delay:300ms">姓</span><span style="transition-delay:350ms">名</span>
+            </label>
+        </div>
+        <button1 id="start-button" >
+            <span1 class="text">开始游戏</span1>
+        </button1>
+    </div>
+    <!-- 游戏顶格基本信息区域 -->
+    <div id="topdata-div" style="display: none;" class="main">
+        <!-- 当前局数 -->
+        <div id="gamecount-div"></div>
+        <!-- 当前轮数 -->
+        <div id="round-div"></div>
+        <!-- 当前玩家 -->
+        <div id="player-div"></div>
+        <!-- 当前玩家的筹码数 -->
+        <div id="chips-div"></div>
+        <!-- 当前倍率 -->
+        <div id="Magnifications-div"></div>
+    </div>
+    <!-- 游戏区域 -->
+    <div id="game-div" style="display: none;" class="main" >
+        <div id="Magnifications-div"></div>
+        <!-- 当前玩家的骰子区域 -->
+        <div id="dice-div">
+            <!-- 五个骰子元素，初始为空，并添加onclick属性 -->
+            <span onclick="toggleSelect(this)"></span>
+            <span onclick="toggleSelect(this)"></span>
+            <span onclick="toggleSelect(this)"></span>
+            <span onclick="toggleSelect(this)"></span>
+            <span onclick="toggleSelect(this)"></span>
+        </div>
+        <!-- 投掷骰子按钮 -->
+        <button1 id="roll-button" >
+            <span1 class="text">投掷骰子</span1>
+        </button1>
+        <!-- 锁定骰子按钮 -->
+        <button1 id="lock-button" >
+            <span1 class="text">锁定骰子</span1>
+        </button1>
+        <!-- 下一位玩家按钮 -->
+        <button1 id="next-button" >
+            <span1 class="text">下一位玩家</span1>
+        </button1>
+        <!-- 确认倍率按钮 -->
+        <button1 id="confirm-button" style="display: none;">
+            <span1 class="text">确认倍率</span1>
+        </button1>
+    </div>
+
+    <!-- 玩家信息储存区域 -->
+    
+    <div id="player-1" style="display: none;" class="main">
+        <!-- 玩家1姓名 -->
+        <div id="name1"></div>
+        <!-- 玩家1筹码 -->
+        <div id="chips1"></div>
+        <!-- 托管按钮 -->
+        <button1 id="isai-button1" style="display: flex;">
+            <span1 class="text">托管</span1>
+        </button1>
+        <!-- 取消托管按钮 -->
+        <button1 id="noai-button1" style="display: none;">
+            <span1 class="text">取消托管</span1>
+        </button1>
+        <!-- 倍率选择框 -->
+        <button id="1-0" style="display: inline;" class = "button" value = "0">0倍</button>
+        <button id="1-1" style="display: inline;" class = "button" value = "1">1倍</button>
+        <button id="1-2" style="display: inline;" class = "button" value = "2">2倍</button>
+        <button id="1-3" style="display: inline;" class = "button" value = "3">3倍</button>
+        <!-- 玩家1骰子结果储存区域 -->
+        <div id="dives1"></div>
+    </div>
+
+    <div id="player-2" style="display: none;" class="main">
+        <!-- 玩家2姓名 -->
+        <div id="name2"></div>
+        <!-- 玩家2筹码 -->
+        <div id="chips2"></div>
+        <!-- 托管按钮 -->
+        <button1 id="isai-button2" style="display: flex;">
+            <span1 class="text">托管</span1>
+        </button1>
+        <!-- 取消托管按钮 -->
+        <button1 id="noai-button2" style="display: none;">
+            <span1 class="text">取消托管</span1>
+        </button1>
+        <!-- 倍率选择框 -->
+        <button id="2-0" style="display: inline;" class = "button" value = "0">0倍</button>
+        <button id="2-1" style="display: inline;" class = "button" value = "1">1倍</button>
+        <button id="2-2" style="display: inline;" class = "button" value = "2">2倍</button>
+        <button id="2-3" style="display: inline;" class = "button" value = "3">3倍</button>
+        <!-- 玩家2骰子结果储存区域 -->
+        <div id="dives2"></div>
+    </div>
+
+    <div id="player-3" style="display: none;" class="main">
+        <!-- 玩家3姓名 -->
+        <div id="name3"></div>
+        <!-- 玩家3筹码 -->
+        <div id="chips3"></div>
+        <!-- 托管按钮 -->
+        <button1 id="isai-button3" style="display: flex;">
+            <span1 class="text">托管</span1>
+        </button1>
+        <!-- 取消托管按钮 -->
+        <button1 id="noai-button3" style="display: none;">
+            <span1 class="text">取消托管</span1>
+        </button1>
+        <!-- 倍率选择框 -->
+        <button id="3-0" style="display: inline;" class = "button" value = "0">0倍</button>
+        <button id="3-1" style="display: inline;" class = "button" value = "1">1倍</button>
+        <button id="3-2" style="display: inline;" class = "button" value = "2">2倍</button>
+        <button id="3-3" style="display: inline;" class = "button" value = "3">3倍</button>
+        <!-- 玩家3骰子结果储存区域 -->
+        <div id="dives3"></div>
+    </div>
+
+    <div id="player-4" style="display: none;" class="main">
+        <!-- 玩家4姓名 -->
+        <div id="name4"></div>
+        <!-- 玩家4筹码 -->
+        <div id="chips4"></div>
+        <!-- 托管按钮 -->
+        <button1 id="isai-button4" style="display: flex;">
+            <span1 class="text">托管</span1>
+        </button1>
+        <!-- 取消托管按钮 -->
+        <button1 id="noai-button4" style="display: none;">
+            <span1 class="text">取消托管</span1>
+        </button1>
+        <!-- 倍率选择框 -->
+        <button id="4-0" style="display: inline;" class = "button" value = "0">0倍</button>
+        <button id="4-1" style="display: inline;" class = "button" value = "1">1倍</button>
+        <button id="4-2" style="display: inline;" class = "button" value = "2">2倍</button>
+        <button id="4-3" style="display: inline;" class = "button" value = "3">3倍</button>
+        <!-- 玩家4骰子结果储存区域 -->
+        <div id="dives4"></div>
+    </div>
+    
+    <!-- 结果区域 -->
+    <div id="result-div" style="display: none;" class="main"></div>
+
+    <!-- 引入JavaScript文件 -->
+    <script src="dice-game.js"></script>
+    <script src="ai.js"></script>
+
+    <!-- 定义一个函数，用来切换骰子元素的选中状态 -->
+    <script>
+      function toggleSelect(element) {
+          // 如果骰子元素有selected类名，那么移除它，否则添加它
+          if (element.classList.contains("selected")) {
+              element.classList.remove("selected");
+          } else {
+              element.classList.add("selected");
+          }
+      }
+    </script>
+</body>
+</html>
